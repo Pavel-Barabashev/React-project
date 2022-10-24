@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import "../src/styles/App.scss";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Login } from "./components/Login";
+import { StartPage } from "./components/StartPage";
+import { useState } from "react";
+import { ProtectionLayer } from "./components/ProtectionLayer";
+import { Register } from "./components/Register";
+import {
+  ErrorSnackbar,
+  SuccessSnackbar,
+} from "./reusable_components&helpers/Snackbars";
+import { SnackbarsContext } from "./reusable_components&helpers/Contexts";
+const App: React.FC = () => {
+  let [isAuth, setIsAuth] = useState(false);
+  let [isSuccessSnackbarVisible, setIsSuccessSnackbarVisible] = useState(false);
+  let [isErrorSnackbarVisible, setIsErrorSnackbarVisible] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <SnackbarsContext.Provider
+        value={{ setIsSuccessSnackbarVisible, setIsErrorSnackbarVisible }}
+      >
+        <Router>
+          <Routes>
+            <Route path="" element={<StartPage />} />
+            <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/profile"
+              element={<ProtectionLayer isAuth={isAuth}></ProtectionLayer>}
+            />
+          </Routes>
+        </Router>
+        <SuccessSnackbar
+          isSuccessSnackbarVisible={isSuccessSnackbarVisible}
+          setIsSuccessSnackbarVisible={setIsSuccessSnackbarVisible}
+        ></SuccessSnackbar>
+        <ErrorSnackbar
+          isErrorSnackbarVisible={isErrorSnackbarVisible}
+          setIsErrorSnackbarVisible={setIsErrorSnackbarVisible}
+        ></ErrorSnackbar>
+      </SnackbarsContext.Provider>
+    </>
   );
-}
-
+};
 export default App;
