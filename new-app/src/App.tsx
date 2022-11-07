@@ -2,31 +2,32 @@ import "../src/styles/App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login } from "./components/Login";
 import { StartPage } from "./components/StartPage";
-import { useState } from "react";
+import React, { useState } from "react";
 import { ProtectionLayer } from "./components/ProtectionLayer";
 import { Register } from "./components/Register";
 import {
   ErrorSnackbar,
   SuccessSnackbar,
 } from "./reusable_components&helpers/Snackbars";
-import { SnackbarsContext } from "./reusable_components&helpers/Contexts";
+import { ContextProvider } from "./reusable_components&helpers/Contexts";
+import { User } from "./types/types";
 const App: React.FC = () => {
-  let [isAuth, setIsAuth] = useState(false);
+  let [user, setUser] = useState<User>();
   let [isSuccessSnackbarVisible, setIsSuccessSnackbarVisible] = useState(false);
   let [isErrorSnackbarVisible, setIsErrorSnackbarVisible] = useState(false);
   return (
     <>
-      <SnackbarsContext.Provider
+      <ContextProvider.Provider
         value={{ setIsSuccessSnackbarVisible, setIsErrorSnackbarVisible }}
       >
         <Router>
           <Routes>
             <Route path="" element={<StartPage />} />
-            <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+            <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/profile"
-              element={<ProtectionLayer isAuth={isAuth}></ProtectionLayer>}
+              element={<ProtectionLayer user={user}></ProtectionLayer>}
             />
           </Routes>
         </Router>
@@ -38,7 +39,7 @@ const App: React.FC = () => {
           isErrorSnackbarVisible={isErrorSnackbarVisible}
           setIsErrorSnackbarVisible={setIsErrorSnackbarVisible}
         ></ErrorSnackbar>
-      </SnackbarsContext.Provider>
+      </ContextProvider.Provider>
     </>
   );
 };

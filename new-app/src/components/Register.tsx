@@ -2,13 +2,16 @@ import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { SnackbarsContext } from "../reusable_components&helpers/Contexts";
+import { ContextProvider } from "../reusable_components&helpers/Contexts";
+import { useNavigate } from "react-router-dom";
 export const Register: React.FC = () => {
+  let navigate = useNavigate();
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  let [isLoginButtonVisible, setIsLoginButtonVisible] = useState(false);
   let { setIsSuccessSnackbarVisible, setIsErrorSnackbarVisible } =
-    useContext(SnackbarsContext);
+    useContext(ContextProvider);
 
   function handleRegister() {
     console.log(email, password);
@@ -51,6 +54,7 @@ export const Register: React.FC = () => {
             .then((response) => {
               console.log(response);
               setIsSuccessSnackbarVisible(true);
+              setIsLoginButtonVisible(true);
             })
             .catch((error) => {
               console.log(error);
@@ -60,6 +64,15 @@ export const Register: React.FC = () => {
       >
         Register
       </Button>
+      {isLoginButtonVisible && (
+        <Button
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          Log in
+        </Button>
+      )}
     </form>
   );
 };

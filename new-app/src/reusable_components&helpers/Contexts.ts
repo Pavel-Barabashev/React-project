@@ -5,7 +5,7 @@ type ContextType = {
   setIsErrorSnackbarVisible: React.Dispatch<SetStateAction<boolean>>;
 };
 
-export const SnackbarsContext = createContext<ContextType>({
+export const ContextProvider = createContext<ContextType>({
   setIsSuccessSnackbarVisible: () => {},
   setIsErrorSnackbarVisible: () => {},
 });

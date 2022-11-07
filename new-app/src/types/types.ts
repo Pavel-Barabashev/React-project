@@ -8,3 +8,8 @@ export type Article = {
   url: string;
   urlToImage: string;
 };
+
+export type User = {
+  email: string;
+  id: number;
+};
