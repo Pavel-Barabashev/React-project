@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login } from "./components/Login";
 import { StartPage } from "./components/StartPage";
 import React, { useState } from "react";
-import { ProtectionLayer } from "./components/ProtectionLayer";
 import { Register } from "./components/Register";
 import {
   ErrorSnackbar,
@@ -11,6 +10,8 @@ import {
 } from "./reusable_components&helpers/Snackbars";
 import { ContextProvider } from "./reusable_components&helpers/Contexts";
 import { User } from "./types/types";
+import { Entries } from "./components/Entries/Entries";
+import { Profile } from "./components/Profile";
 const App: React.FC = () => {
   let [user, setUser] = useState<User>();
   let [isSuccessSnackbarVisible, setIsSuccessSnackbarVisible] = useState(false);
@@ -25,10 +26,8 @@ const App: React.FC = () => {
             <Route path="" element={<StartPage />} />
             <Route path="/login" element={<Login setUser={setUser} />} />
             <Route path="/register" element={<Register />} />
-            <Route
-              path="/profile"
-              element={<ProtectionLayer user={user}></ProtectionLayer>}
-            />
+            <Route path="/profile" element={<Profile user={user} />} />
+            <Route path="/profile/entries" element={<Entries user={user} />} />
           </Routes>
         </Router>
         <SuccessSnackbar

@@ -111,3 +111,18 @@ color:rgb(184, 183, 183);
   text-decoration: none;
  }
 
+ #entry-add-button{
+  @extend .screen-center;
+  font-size: large;
+  font-weight: bold;
+  color: gray;
+ }
+
+ .yes-no-form{
+  @extend .screen-center;
+  z-index: 1;
+ }
+
+ .main-navbar{
+  z-index: 2;
+ }

@@ -13,3 +13,8 @@ export type User = {
   email: string;
   id: number;
 };
+
+export type Entry = {
+  title: string;
+  text: string;
+};

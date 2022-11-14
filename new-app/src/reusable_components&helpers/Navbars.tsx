@@ -1,4 +1,7 @@
 import react from "react";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ArticleIcon from "@mui/icons-material/Article";
+import PersonIcon from "@mui/icons-material/Person";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,22 +10,67 @@ import { useNavigate } from "react-router-dom";
 export const MainNavbar: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar
+      className="main-navbar"
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+    >
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand
+          onClick={() => {
+            navigate("/news");
+          }}
+        >
+          Profile
+          <PersonIcon />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+            <Nav.Link
+              onClick={() => {
+                navigate("entries");
+              }}
+            >
+              My entries
+            </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/news");
+              }}
+            >
+              Pricing
+            </Nav.Link>
+            <NavDropdown title="Options" id="collasible-nav-dropdown">
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/news");
+                }}
+              >
+                Action
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/news");
+                }}
+              >
                 Another action
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/news");
+                }}
+              >
+                Something
+              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/news");
+                }}
+              >
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
@@ -30,18 +78,19 @@ export const MainNavbar: React.FC = () => {
           <Nav>
             <Nav.Link
               onClick={() => {
-                navigate("/news");
+                navigate("news");
               }}
             >
               News
+              <ArticleIcon />
             </Nav.Link>
             <Nav.Link
-              eventKey={2}
               onClick={() => {
                 navigate("/");
               }}
             >
               Log out
+              <LogoutIcon />
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
