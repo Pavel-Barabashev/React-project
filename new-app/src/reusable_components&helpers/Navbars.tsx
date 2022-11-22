@@ -11,7 +11,7 @@ export const MainNavbar: React.FC = () => {
   const navigate = useNavigate();
   return (
     <Navbar
-      className="main-navbar"
+      className="main-navbar "
       collapseOnSelect
       expand="lg"
       bg="dark"
@@ -20,7 +20,7 @@ export const MainNavbar: React.FC = () => {
       <Container>
         <Navbar.Brand
           onClick={() => {
-            navigate("/news");
+            navigate("/profile");
           }}
         >
           Profile
@@ -31,7 +31,7 @@ export const MainNavbar: React.FC = () => {
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
-                navigate("entries");
+                navigate("/profile/entries");
               }}
             >
               My entries

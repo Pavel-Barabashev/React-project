@@ -126,3 +126,10 @@ color:rgb(184, 183, 183);
  .main-navbar{
   z-index: 2;
  }
+
+#card-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr );
+  grid-gap: 3%;
+  padding: 3%;
+}
