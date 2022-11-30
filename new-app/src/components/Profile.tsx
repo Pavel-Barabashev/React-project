@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, CircularProgress } from "@mui/material";
-import { ContextProvider } from "../reusable_components&helpers/Contexts";
+import { ContextProvider } from "../reusable_components&helpers/contexts/Contexts";
 import { Article, User } from "../types/types";
 import { MainNavbar } from "../reusable_components&helpers/Navbars";
 import AddIcon from "@mui/icons-material/Add";

@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import SaveIcon from "@mui/icons-material/Save";
 import Form from "react-bootstrap/Form";
 import { YesNoForm } from "../../reusable_components&helpers/YesNoForm";
-import { ContextProvider } from "../../reusable_components&helpers/Contexts";
+import { ContextProvider } from "../../reusable_components&helpers/contexts/Contexts";
 import {
   getFromLS,
   writeToLS,

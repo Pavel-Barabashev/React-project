@@ -8,7 +8,7 @@ import {
   ErrorSnackbar,
   SuccessSnackbar,
 } from "./reusable_components&helpers/Snackbars";
-import { ContextProvider } from "./reusable_components&helpers/Contexts";
+import { ContextProvider } from "./reusable_components&helpers/contexts/Contexts";
 import { User } from "./types/types";
 import { Entries } from "./components/Entries/Entries";
 import { Profile } from "./components/Profile";

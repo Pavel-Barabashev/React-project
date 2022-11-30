@@ -18,3 +18,12 @@ export type Entry = {
   title: string;
   text: string;
 };
+
+export type AuthContext = {
+  login: (email: string, password: string) => void;
+  signup: (email: string, password: string) => void;
+  logout: () => Promise<void>;
+  resetPassword: (email: string) => void;
+  updateEmail: (email: string) => void;
+  updatePassword: (password: string) => void;
+};

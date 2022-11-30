@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { Button } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { ContextProvider } from "../reusable_components&helpers/Contexts";
+import { ContextProvider } from "../reusable_components&helpers/contexts/Contexts";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../reusable_components&helpers/contexts/AuthContext";
+
 export const Register: React.FC = () => {
   let navigate = useNavigate();
   let [email, setEmail] = useState("");
@@ -12,6 +14,7 @@ export const Register: React.FC = () => {
   let [isLoginButtonVisible, setIsLoginButtonVisible] = useState(false);
   let { setIsSuccessSnackbarVisible, setIsErrorSnackbarVisible } =
     useContext(ContextProvider);
+  let { signUp } = useAuth();
 
   function handleRegister() {
     console.log(email, password);

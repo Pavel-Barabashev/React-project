@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -10,6 +10,9 @@ interface Props {
 }
 
 export const Login: React.FC<Props> = ({ setUser }) => {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
   let [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -36,6 +39,7 @@ export const Login: React.FC<Props> = ({ setUser }) => {
           name="email"
           className="input"
           type="email"
+          ref={emailRef}
         />
         <label htmlFor="password">Password:</label>
         <input
